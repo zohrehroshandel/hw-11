@@ -1,1 +1,31 @@
 @import "tailwindcss";
+*{
+  text-transform: capitalize;
+}
+.search-container input::placeholder {
+  color: white;
+  opacity: 0.8;
+}
+.search-container input {
+  width: 100%;
+  padding: 12px 20px 12px 25px;
+  border: none;
+  border-radius: 8px;
+  background-color: #7926ed; 
+  color: white;
+  font-size: 16px;
+  outline: none;
+  display: flex;
+
+}
+.search-icon{
+   position: absolute;
+  left: 1px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 18px;
+  pointer-events: none;
+
+}
+
