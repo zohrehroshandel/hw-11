@@ -52,6 +52,12 @@ export function showModal() {
 							console.log("data:", newTodo);
 							addTodo(newTodo);
 							console.log("save task in localstroge");
+							const container=document.getElementById('todo-table-body');
+							renderTodoLList(container);
+							console.log('tabele update')
+							overlay.remove();
+							console.log('close modal');
+							
 						},
 					},
 				],

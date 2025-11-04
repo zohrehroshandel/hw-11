@@ -13,3 +13,9 @@ export function addTodo(todo) {
   console.log('task save',todo);
   
 }
+export function deleteTodo(id) {
+  const todos=getTodos().filter((t)=>t.id !==id);
+  saveTodos(todos);
+  console.log('delete shod');
+  
+}
