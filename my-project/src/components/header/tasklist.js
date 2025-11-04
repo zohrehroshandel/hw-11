@@ -2,6 +2,7 @@ import { El } from "../../utils/el";
 import { deleteTodo, getTodos } from "../../utils/state";
 import { showViewModal } from "./viewModal";
 import { getStatusColor,getPriorityColor } from "../../utils/style";
+import { showEditModal } from "./editModal";
 export function renderTodoLList(container) {
 	container.innerHTML = "";
 	const todos = getTodos();
@@ -61,8 +62,8 @@ export function renderTodoLList(container) {
 								{
 									event:'click',
 									callback:()=>{
-										console.log('editt todo');
-										// showEditModal(todo),
+										console.log(' open modal editt todo');
+										showEditModal(todo);
 									},
 								},
 							],

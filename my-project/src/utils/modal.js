@@ -5,7 +5,7 @@ import { renderTodoLList } from "../components/header/tasklist";
 export function showModal() {
 	const overlay = El({
 		element: "div",
-		className: `modalBox fixed top-o left-0 w-full h-full  bg-black/10 bg-opacity-20 backdrop-blur-sm flex justify-center items-center Z-50`,
+		className: `modalBox fixed top-0 left-0 w-full h-full  bg-black/10 bg-opacity-20 backdrop-blur-sm flex justify-center items-center z-50`,
 	});
 	const form = El({
 		element: "form",
@@ -21,14 +21,16 @@ export function showModal() {
 				element: "select",
 				id: "task-priority",
 				className: "border p-2",
-				children: [
-					El({ element: "option", innerText: "Hight" }),
-					El({ element: "option", innerText: "Medium" }),
-					El({ element: "option", innerText: "Low" }),
-				],
+				children: 
+					['low','medium','hight'].map((text)=>El({element:"option",innerText:text,value:text}))
+				,
 			}),
 			El({
-				element:'select'
+				element:'select',
+				id:'status',
+				className:'border p-2',
+				children:['todo','doing','done'].map((text)=>El({element:'option',innerText:text})
+				),
 			}),
 			El({
 				element: "input",
@@ -50,6 +52,7 @@ export function showModal() {
 								id: Date.now(),
 								name: document.getElementById("task-name").value,
 								priority: document.getElementById("task-priority").value,
+								status:document.getElementById('status').value,
 								deadline: document.getElementById("task-deadline").value,
 							};
 							console.log("data:", newTodo);
