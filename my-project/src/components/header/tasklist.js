@@ -1,24 +1,26 @@
 import { El } from "../../utils/el";
 import { deleteTodo, getTodos } from "../../utils/state";
 import { showViewModal } from "./viewModal";
+import { getStatusColor,getPriorityColor } from "../../utils/style";
 export function renderTodoLList(container) {
-	container.innnerHTML = "";
+	container.innerHTML = "";
 	const todos = getTodos();
+  console.log('taskmojod',todos);
 	console.log("task mojood", todos);
 	for (const todo of todos) {
 		const row = El({
 			element: "tr",
 			children: [
-				El({ element: "td", innerText: todo.name, className: "p-2 border border-gray-300" }),
+				El({ element: "td", innerText:todo.name, className: "p-2 border border-gray-300" }),
 				El({
 					element: "td",
-					innerText: todo.priority,
-					className: "p-2 border border-gray-300 text-center",
+					innerText:todo.priority,
+					className: `p-2 border border-gray-300 text-center ${getPriorityColor(todo.priority)}`,
 				}),
-				El({ element: "td", innerText: todo.status, className: "p-2 border border-gray-300 text-center" }),
+				El({ element: "td", innerText:todo.status, className: `p-2 border border-gray-300 text-center ${getStatusColor(todo.status)}`}),
 				El({
 					element: "td",
-					innerText: todo.deadline,
+					innerText:todo.deadline,
 					className: "p-2 border border-gray-300 text-center",
 				}),
 				El({
@@ -33,8 +35,11 @@ export function renderTodoLList(container) {
 									event:'click',
 									callback:()=>{
 										console.log('delete task');
+										console.log('delet mishe!',todo.id);
+										
 										deleteTodo(todo.id);
-										renderTodoLList(container);
+									const container=document.getElementById('todo-table-body');
+									renderTodoLList(container);
 										
 									},
 								},

@@ -28,6 +28,9 @@ export function showModal() {
 				],
 			}),
 			El({
+				element:'select'
+			}),
+			El({
 				element: "input",
 				type: "date",
 				id: "task-deadline",
